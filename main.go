@@ -53,6 +53,7 @@ var (
 	app                     = kingpin.New("cloudwatch-log-aggregator", "A CLI tool to fetch all cloudwatch logs within given timeframe")
 	maxConcurrentCallsToAWS = app.Flag("concurrency", "Max concurrent calls to aws (Default value: 4) Min: 1 Max: 9").Short('c').PlaceHolder("4").Default("4").Int()
 	debugMode               = app.Flag("debug", "Enable debug mode").Default("false").Bool()
+	configFile              = app.Flag("configFile", "Manually specify a config file location").Short('f').Default("config.toml").String()
 )
 
 func main() {
@@ -68,7 +69,7 @@ func main() {
 	programStartTime := time.Now()
 
 	initVariablesForSubModules()
-	validations.DoValidations()
+	validations.DoValidations(*configFile)
 
 	go logs.Init()
 	//starting a goroutine which takes care of the logging process. Initialzing a head for high availability

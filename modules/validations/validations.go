@@ -18,16 +18,16 @@ var (
 )
 
 //DoValidations run toml and other validations essential for program
-func DoValidations() {
-	parseToml()
+func DoValidations(configFile string) {
+	parseToml(configFile)
 	validateTomlData()
 	checkForLimitValueInQueryString()
 }
 
-func parseToml() {
-	byteData, err := ioutil.ReadFile("./config.toml")
+func parseToml(configFile string) {
+	byteData, err := ioutil.ReadFile("./" + configFile)
 	if err != nil {
-		logs.LogError("Config.toml file doesn't exist.Please create a config.toml file in the same directory")
+		logs.LogError("Could not find a config.toml file named '" + configFile + "'. Please create a valid config.toml file in the same directory")
 		os.Exit(1)
 	}
 	stringFileData := string(byteData)
