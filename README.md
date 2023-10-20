@@ -1,3 +1,43 @@
+# Chewy Fork Instructions
+
+This is a Chewy fork of [Cloudwatch Log Aggregator](https://github.com/hemachandsai/cloudwatch-log-aggregator).
+
+We fork and build locally to avoid connecting unknown binaries to our data center.
+
+The following are Chewy-specific instructions to build and run the tool, see below for original README.
+
+## Building
+
+Install `go` using brew: `brew install go`.
+
+Build project and resolve dependencies: `go mod init cloudwatch-log-aggregator`
+
+Build the binaries by running the included build script: `./build.sh`. This will create target binaries for Mac, Windows and Linux.
+
+## Running
+
+### AWS Login
+
+You will need active AWS credentials set as environment variables in order to run the project.
+
+If you are using `aws sso login`, then log in with your desired profile/environment.
+
+Once you're logged in run the following command to set credentials to env vars that the tool can recognize:
+
+`source <(aws configure export-credentials --profile {YOUR_PROFILE_NAME} --format env)`
+
+The tool should now be able to connect to AWS.
+
+## Configuring Query
+
+Edit the config.toml file to target the log group and log query you want to run.
+
+Run the tool by running the appropriate binary (e.g. for Mac you'd run `./cloudwatch-log-aggregator-mac`).
+
+Remember to run the tool for all environments your application is live on (e.g. if you run on USE-1 and USE-2
+you will need to run the tool twice, once for USE-1 and once for USE-2).
+
+---
 
 <div align="center">
   <img src="./assets/logo.png" align="center"></img>
