@@ -32,7 +32,7 @@ Once you're logged in run the following command to set credentials to env vars t
 
 The tool should now be able to connect to AWS.
 
-## Configuring the export query and running the tool
+### Configuring the export query and running the tool
 
 Edit the config.toml file to target the log group and log query you want to run.
 
