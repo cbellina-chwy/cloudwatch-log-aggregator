@@ -10,13 +10,17 @@ The following are Chewy-specific instructions to build and run the tool, see bel
 
 Install `go` using brew: `brew install go`.
 
-Build project and resolve dependencies: `go mod init cloudwatch-log-aggregator`
+Initialize the project: `go mod init cloudwatch-log-aggregator`
 
-Build the binaries by running the included build script: `./build.sh`. This will create target binaries for Mac, Windows and Linux.
+Resolve dependencies: `go mod tidy`
+
+Build the binaries by running the included build script: `./build.sh`. T
+
+This will create target binaries for Mac, Windows and Linux under the `binaries` folder.
 
 ## Running
 
-### AWS Login
+### Setting up AWS credentials
 
 You will need active AWS credentials set as environment variables in order to run the project.
 
@@ -28,14 +32,15 @@ Once you're logged in run the following command to set credentials to env vars t
 
 The tool should now be able to connect to AWS.
 
-## Configuring Query
+## Configuring the export query and running the tool
 
 Edit the config.toml file to target the log group and log query you want to run.
 
-Run the tool by running the appropriate binary (e.g. for Mac you'd run `./cloudwatch-log-aggregator-mac`).
+Run the tool by running the appropriate binary (e.g. for Mac you'd run `./binaries/cloudwatch-log-aggregator-mac`).
 
 Remember to run the tool for all environments your application is live on (e.g. if you run on USE-1 and USE-2
-you will need to run the tool twice, once for USE-1 and once for USE-2).
+you will need to run the tool twice, once for USE-1 and once for USE-2, editing the `config.toml` region variable
+in-between runs).
 
 ---
 
