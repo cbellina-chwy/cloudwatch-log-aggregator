@@ -10,11 +10,11 @@ The following are Chewy-specific instructions to build and run the tool, see bel
 
 Install `go` using brew: `brew install go`.
 
-Initialize the project: `go mod init cloudwatch-log-aggregator`
+Initialize the project: `go mod init cloudwatch-log-aggregator`.
 
-Resolve dependencies: `go mod tidy`
+Resolve dependencies: `go mod tidy`.
 
-Build the binaries by running the included build script: `./build.sh`. T
+Build the binaries by running the included build script: `./build.sh`.
 
 This will create target binaries for Mac, Windows and Linux under the `binaries` folder.
 
