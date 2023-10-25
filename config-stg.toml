@@ -1,0 +1,8 @@
+StartTime = "2023-10-18T10:00:00"
+EndTime = "2023-10-18T10:59:59"
+LogGroupName = "/stg-use1-catalog-search-service/service"
+LogQuery = """fields @timestamp, @log
+| filter @message like /batchEvaluateFeatureResponse/
+| parse @message "Results=[*])" as Evaluation_Results
+| sort @timestamp desc"""
+AWSRegion = "us-east-1"
