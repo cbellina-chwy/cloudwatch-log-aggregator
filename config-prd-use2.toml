@@ -1,9 +1,9 @@
-StartTime = "2023-10-09T00:00:00"
-EndTime = "2023-10-09T23:59:59"
+StartTime = "2023-10-23T00:00:00"
+EndTime = "2023-10-23T23:59:59"
 LogGroupName = "/prd-use2-catalog-search-service/service"
 LogQuery = """fields @timestamp, @log
 | filter @message like /batchEvaluateFeatureResponse/
-| filter @message like /2023_09_LEARNTORANKRELAX_PATCH1/
+| filter @message like /2023_10_Cornucopia2_5/
 | parse @message "Results=[*])" as Evaluation_Results
 | sort @timestamp desc"""
 AWSRegion = "us-east-2"
